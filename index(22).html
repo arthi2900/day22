@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <script>
+        fetch("https://restcountries.com/v3.1/all")
+        .then(function(data){
+          return data.json();
+        })
+        .then (function(dataObj){
+
+                       var box=document.createElement("div")
+                       var tb=document.createElement("div")
+            var img1=document.createElement("div")
+            dataObj.forEach(element=>{
+                box.style.width="100%";
+ box.style.columnCount="3";
+box.style.border="3px solid black";
+box.style.columnRule = "3px outset lightblue";
+box.style.Rule = "3px outset lightblue";
+   box.style.border="1px solid #c3c3c3";
+   box.style.padding= "4px 4px";
+   box.style.marginBottom="10%";
+  box.style.boxsizing="border-box";
+  box.style.marginLeft="10px";
+                //name
+                var flag=document.createElement("img")
+                flag.setAttribute("src",element.flags.png)
+                flag.setAttribute("width",150)
+                flag.style.border="1px solid black";
+               flag.style.text="center"
+              
+              
+              // box.append(tb)
+              
+             
+               var li=document.createElement("div");
+              
+               li.style.padding= "20px 25px";
+               li.style.width="47%";
+               li.style.margintop="10%";
+               li.style.border="1px solid black";
+               li.append(flag)
+               var li1=document.createElement("div");
+               li1.innerText=element.cca2
+              li.append(li1)
+               var li2=document.createElement("div");
+               li2.innerText=element.name.common
+               li.append(li2)
+               box.append(li)
+           
+
+                //image
+               
+                //display
+
+
+document.body.append(box)
+
+
+
+            });
+            
+        })
+        
+        .catch(function(err){
+            console.log(err)
+        })
+        </script>
+</body>
+</html>
